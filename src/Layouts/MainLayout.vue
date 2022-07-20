@@ -1,30 +1,49 @@
 <template>
-  <div>
-    <p>
-      {{ user.name }}
-      خوش آمدی
-      <logout-component/>
-    </p>
-
-    <div>
-      <router-link to="/users">list</router-link>
-      <br>
-      <router-link to="/users-create">user-create</router-link>
+  <div id="main">
+    <div :class="cssClassOverlay" id="menuOverlay" @click="toggleMenu"></div>
+    <sidebar-component :class="cssClass"/>
+    <div id="content" :class="cssClass">
+      <top-nav-bar-component />
+      <div id="page">
+        <router-view/>
+      </div>
     </div>
-    <router-view/>
+    <div class="text-center pb-3">
+      <small class="text-primary">sssss</small>
+    </div>
   </div>
 </template>
 
 <script>
-import LogoutComponent from '@/components/LogoutComponent'
+// import LogoutComponent from '@/components/LogoutComponent'
+import SidebarComponent from '@/components/SidebarComponent'
+import TopNavBarComponent from '@/components/TopNavBarComponent'
 
 export default {
   name: 'MainLayout',
 
-  components: { LogoutComponent },
+  components: { TopNavBarComponent, SidebarComponent },
+  methods: {
+    toggleMenu: function () {
+      this.$store.state.isWide = !this.$store.state.isWide
+    }
+  },
   computed: {
     user: function () {
       return this.$store.state.user
+    },
+    cssClass: function () {
+      return {
+        wide: this.$store.state.isWide
+      }
+    },
+    cssClassOverlay: function () {
+      return {
+        wide: this.$store.state.isWide,
+        'd-none': this.$store.state.isWide,
+        'd-block': !this.$store.state.isWide,
+        'd-md-none': true
+      }
     }
   }
 }

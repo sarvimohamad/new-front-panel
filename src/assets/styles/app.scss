@@ -6,3 +6,68 @@
 body,html{
   direction: rtl;
 }
+
+#main {
+  overflow: hidden;
+  direction: rtl;
+  text-align: right;
+}
+
+#sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding-left: 16px;
+  z-index: 999;
+  width: 260px;
+  height: 100%;
+  background: #59de15;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+  transition: right .3s ease;
+
+  &.wide {
+    right: -260px;
+  }
+}
+
+#content {
+  width: calc(100% - 260px);
+  float: left;
+  padding: 16px 16px 100px 16px;
+  transition: all .3s ease;
+
+  &.wide {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    filter: blur(2px);
+    opacity: 0.5;
+    transform: translateX(-260px);
+    overflow: hidden;
+    &.wide {
+      filter: blur(0);
+      opacity: 1;
+      overflow: auto;
+      transform: translateX(0);
+    }
+  }
+}
+
+#top-nav-bar {
+  height: 75px;
+  width: 100%;
+  background: #ee1919;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+  line-height: 75px;
+  padding: 0 24px 0 8px;
+}
+
+#page {
+  margin-top: 16px;
+  padding: 16px 16px 16px 0;
+  min-height: calc(100vh - 123px);
+  background: #1e1e2d;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+}
