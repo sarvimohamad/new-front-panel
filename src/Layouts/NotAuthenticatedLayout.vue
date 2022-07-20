@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <login-component/>
-  </div>
+  <login-component/>
 </template>
 
 <script>

@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <component :is="layout" v-on:layout-changed="changeLayout"/>
-  </div>
+  <component :is="layout" v-on:layout-changed="changeLayout"/>
 </template>
 
 <script>
