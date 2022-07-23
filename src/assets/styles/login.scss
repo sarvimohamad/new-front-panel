@@ -50,13 +50,13 @@
     background-image: url('/src/assets/styles/images/123.png');
     background-size: 9% 40%;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: 96%;
   }
   .password-input input{
     background-image: url('/src/assets/styles/images/Lock@3x.png');
     background-size: 9% 60%;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: 96%;
   }
   .password-input .show-pass{
     /*background-image: url('/Show@3x.png');*/
@@ -113,11 +113,12 @@
 }
 
 .brand-image{
-  float: right;
+  width: 2rem;
+  height: 2rem;
 }
 
 .brand-text{
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .breadcrumb{
@@ -127,11 +128,7 @@
 }
 
 .brand-link{
-  font-size: 1.25rem;
-  display: block;
-  white-space: nowrap;
-  min-height: 73px;
-  line-height: 54px;
+font-size: small;
 }
 
 .profile-icon{
@@ -859,4 +856,14 @@ input:checked + .slider:before {
 }
 .sidebar-mini.sidebar-collapse .main-sidebar .brand-link .open{
   display: block !important;
+}
+.text-height{
+  padding-top: 9px;
+}
+.ul-box{
+  background-color: #1e1e27;
+}
+.list-group-item{
+  background-color: #1e1e27;
+  color: #e1e1e1;
 }
