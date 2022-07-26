@@ -31,7 +31,7 @@
           <div class="form-group mb-1 captcha-input ">
             <input type="text" class="form-control" placeholder="کد امنیتی">
           </div>
-          <div class="mb-5">
+          <div class="mb-3">
             <div class="row">
               <div class="col-6 align-items-end pt-3   forget">
                 <a href="#" class="forget-password">فراموشی رمز عبور</a>
@@ -42,10 +42,15 @@
             </div>
           </div>
           <div class=" mb-1">
-            <button type="button" @click="submit" class="btn btn-primary w-100 btn-sm">ورود</button>
+            <button type="button" @click="submit" class="btn btn-primary btn-login w-100 btn-md">ورود</button>
           </div>
-          <div class="pt-2">
-            <a href="/register" ><small>ثبت نام نکرده‌ام</small></a>
+          <div class="d-flex flex-row  pt-1">
+            <div class="p-2">
+              <input type="checkbox">
+            </div>
+           <div class="p-2">
+             <a style="color: white" class="text-decoration-none" href="/register" ><small>مرا به خاطر بسپار</small></a>
+           </div>
           </div>
         </form>
         <loading-component v-show="loading"/>

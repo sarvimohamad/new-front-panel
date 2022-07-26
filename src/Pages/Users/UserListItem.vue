@@ -1,12 +1,19 @@
 <template>
   <tr>
-    <td>{{ item }}</td>
     <td>
-      <router-link :to="{name:'show-user', params: {id:item.id}}">edit</router-link>
+      <input type="checkbox" id='chkCheckAll'/>
     </td>
-    <td>
+    <td v-text="item.id"></td>
+    <td>{{item.name}}</td>
+    <td>{{item.email}}</td>
+    <td class="row">
       <loading-component v-if="loading"/>
-      <button @click="removeItem" v-if="!loading">Delete</button>
+      <div class="col-6 d-flex justify-content-end">
+        <router-link class="btn btn-dark" :to="{name:'show-user', params: {id:item.id}}">ویرایش</router-link>
+      </div>
+      <div class="col-6 d-flex justify-content-start">
+        <button class="btn btn-danger" @click="removeItem" v-if="!loading">پاک کردن</button>
+      </div>
     </td>
   </tr>
 </template>
@@ -36,3 +43,6 @@ export default {
   }
 }
 </script>
+<style scoped lang="scss">
+@import "src/assets/styles/login";
+</style>

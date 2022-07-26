@@ -1,5 +1,5 @@
 <template>
-  <a @click="logout">Logout</a>
+  <a @click="logout">خروج</a>
 </template>
 
 <script>

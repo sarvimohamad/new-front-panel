@@ -7,22 +7,22 @@
       <div id="page">
         <router-view/>
       </div>
-    </div>
-    <div class="text-center pb-3">
-      <small class="text-primary">sssss</small>
+      <footer-component/>
     </div>
   </div>
 </template>
 
 <script>
 // import LogoutComponent from '@/components/LogoutComponent'
+// import RootComponent from '@/components/RootComponent'
 import SidebarComponent from '@/components/SidebarComponent'
 import TopNavBarComponent from '@/components/TopNavBarComponent'
+import FooterComponent from '@/components/FooterComponent'
 
 export default {
   name: 'MainLayout',
 
-  components: { TopNavBarComponent, SidebarComponent },
+  components: { TopNavBarComponent, SidebarComponent, FooterComponent },
   methods: {
     toggleMenu: function () {
       this.$store.state.isWide = !this.$store.state.isWide
