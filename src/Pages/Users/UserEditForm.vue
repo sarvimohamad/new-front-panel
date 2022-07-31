@@ -5,6 +5,7 @@
       <input v-model="query.name" placeholder="name" type="text"/><br>
       <input v-model="query.email" placeholder="Email" type="email"/><br>
       <input v-model="query.password" placeholder="password" type="password"/><br>
+      <b-select :options="roles" v-model="query.roles" multiple />
       <input type="submit">
     </form>
   </div>
@@ -20,18 +21,22 @@ export default {
   data () {
     return {
       loading: false,
+      roles: [],
       query: {
-        name: '',
-        email: '',
-        password: ''
-
+        roles: []
       }
     }
   },
   mounted () {
+    this.getRoleOption()
     this.getUserData()
   },
   methods: {
+    getRoleOption: function () {
+      BaseApi.get('admin/roles', { params: { 'get-options': 1 } }).then((response) => {
+        this.roles = response.data.data
+      })
+    },
     getUserData: function () {
       this.loading = true
       BaseApi.get(`admin/users/${this.$route.params.id}`).then((response) => {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading-component v-if="loading"/>
-    <div class="col-12">
+    <div class="col-12" v-if="!loading">
       <div class="d-flex pt-3 m-2">
         <table class="table table-content">
           <thead class="table-dark text-center ">
@@ -16,10 +16,19 @@
           </tr>
           </thead>
           <tbody id="myTable" class=" text-center">
-          <user-list-item v-for="(row, key) in list" :key="key" :item="row" v-on:item-removed="removeItemFromList(row.id)"/>
+            <user-list-item v-for="(row, key) in list" :key="key" :item="row" v-on:item-removed="removeItemFromList(row.id)"/>
           </tbody>
         </table>
       </div>
+      <b-pagination
+        align="center"
+        class="ltr"
+        v-model="query.page"
+        v-on:change="paginate"
+        :total-rows="meta.total"
+        :per-page="meta.per_page"
+        v-if="meta.total > meta.per_page"
+      ></b-pagination>
     </div>
   </div>
 </template>
@@ -39,7 +48,10 @@ export default {
   data () {
     return {
       list: [],
-      query: {},
+      query: {
+        page: 1
+      },
+      meta: {},
       loading: false
     }
   },
@@ -52,10 +64,15 @@ export default {
         return item.id !== id
       })
     },
+    paginate: function (page) {
+      this.query.page = page
+      this.getData()
+    },
     getData: function () {
       this.loading = true
-      BaseApi.get('admin/users', this.query).then((response) => {
+      BaseApi.get('admin/users', { params: this.query }).then((response) => {
         this.list = response.data.data
+        this.meta = response.data.meta
       }).catch(function (error) {
         console.log(error)
       }).finally(() => {

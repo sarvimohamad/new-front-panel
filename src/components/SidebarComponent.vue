@@ -18,7 +18,7 @@
                 <img src="../assets/styles/images/menu-icons/dashboard-dark-icon.svg" alt="dashboard" class="">
               </div>
               <div class="col-10 ">
-                <router-link class="router-link" :to="{name:'users'}">لیست</router-link>
+                <router-link class="router-link" :to="{name:'users'}">لیست کاربران</router-link>
               </div>
             </div>
           </li>
@@ -43,7 +43,7 @@
                   <div class="row">
                     <div id="request" @click="changeArrow($event)" class="cursor-pointer">
                       <div class="d-flex justify-content-start">
-                        <span>درخواست ها</span>
+                        <span>مدیریت وب سایت ها</span>
                       </div>
                       <div class="d-flex justify-content-end">
                         <img src="../assets/styles/images/left Arrow 2@3x-min.png" alt="dashboard"
@@ -115,7 +115,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-@import "src/assets/styles/login";
-</style>

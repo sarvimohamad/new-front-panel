@@ -5,6 +5,7 @@
       <input type="text" v-model="query.name" placeholder="name"/><br>
       <input type="email" v-model="query.email" placeholder="Email"/><br>
       <input type="password" v-model="query.password" placeholder="Password"/><br>
+      <b-select :options="roles" v-model="query.roles" multiple />
       <input type="submit">
     </form>
   </div>
@@ -19,16 +20,25 @@ export default {
   components: { LoadingComponent },
   data () {
     return {
+      roles: [],
       loading: false,
       query: {
         name: '',
         email: '',
-        password: ''
-
+        password: '',
+        roles: []
       }
     }
   },
+  mounted () {
+    this.getRoleOption()
+  },
   methods: {
+    getRoleOption: function () {
+      BaseApi.get('admin/roles', { params: { 'get-options': 1 } }).then((response) => {
+        this.roles = response.data.data
+      })
+    },
     submit: function (e) {
       e.preventDefault()
       this.loading = true
