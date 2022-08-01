@@ -34,10 +34,10 @@ const routes = [{
   name: 'workspace-create',
   component: WorkSpaceCreate
 }, {
-    path: '/work-spaces/:id',
-    name: 'show-work-space',
-    component: WorkSpaceEdit
-  },]
+  path: '/work-spaces/:id',
+  name: 'show-work-space',
+  component: WorkSpaceEdit
+}]
 
 const router = new VueRouter({
   mode: 'history',

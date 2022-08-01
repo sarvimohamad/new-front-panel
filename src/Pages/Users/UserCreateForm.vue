@@ -1,13 +1,23 @@
 <template>
   <div>
     <loading-component v-if="loading"/>
-    <form @submit="submit" v-if="!loading">
-      <input type="text" v-model="query.name" placeholder="name"/><br>
-      <input type="email" v-model="query.email" placeholder="Email"/><br>
-      <input type="password" v-model="query.password" placeholder="Password"/><br>
-      <b-select :options="roles" v-model="query.roles" multiple />
-      <input type="submit">
-    </form>
+    <b-form @submit="submit" v-if="!loading">
+      <b-form-group label="نام">
+        <b-form-input type="text" v-model="query.name" placeholder="name"/>
+      </b-form-group>
+      <b-form-group label="ایمیل">
+        <b-form-input type="text" v-model="query.email" placeholder="email"/>
+      </b-form-group>
+      <b-form-group label="password">
+        <b-form-input type="password" v-model="query.password" placeholder="password"/>
+      </b-form-group>
+      <b-form-group label="roles">
+        <b-form-select :options="roles" v-model="query.roles" multiple />
+      </b-form-group>
+      <div class="float-start">
+        <b-button variant="success">ثبت</b-button>
+      </div>
+    </b-form>
   </div>
 </template>
 
