@@ -4,12 +4,12 @@
       <input type="checkbox" id='chkCheckAll'/>
     </td>
     <td v-text="item.id"></td>
-    <td>{{item.name}}</td>
-    <td v-text="item.email"></td>
+    <td>{{item.title}}</td>
+    <td v-text="item.domain"></td>
     <td class="row">
       <loading-component v-if="loading"/>
       <div class="col-6 d-flex justify-content-end">
-        <router-link class="btn btn-dark"  :to="{name:'show-user', params: {id:item.id}}">ویرایش</router-link>
+        <router-link class="btn btn-dark"  :to="{name:'show-work-space', params: {id:item.id}}">ویرایش</router-link>
       </div>
       <div class="col-6 d-flex justify-content-start">
         <button class="btn btn-danger" @click="removeItem" v-if="!loading">پاک کردن</button>
@@ -23,7 +23,7 @@ import BaseApi from '@/Api/BaseApi'
 import LoadingComponent from '@/components/LoadingComponent'
 
 export default {
-  name: 'UserListItem',
+  name: 'WorkSpaceListItem',
   components: { LoadingComponent },
   props: ['item'],
   data () {
@@ -34,7 +34,7 @@ export default {
   methods: {
     removeItem: function () {
       this.loading = true
-      BaseApi.delete(`admin/users/${this.item.id}`).then(() => {
+      BaseApi.delete(`admin/work-spaces/${this.item.id}`).then(() => {
         this.$emit('item-removed')
       }).finally(() => {
         this.loading = false
